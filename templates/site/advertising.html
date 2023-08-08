@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<body class="advertising ">
+  <div class="wrapper">
+    {% include 'includes/navbar.html' %}
+    <div class="content">
+      <header class="hero-section">
+        <img data-speed=".6" class="hero" src="{{bg}}" alt="Alt" />
+        <div class="container">
+          <div data-speed=".75" class="main-header">
+            <div class="main-box">
+              <span data-i18n="allSpan"> All In </span>
+            <h1 class="main-title" data-i18n="all">
+              One <br />Group
+
+            </h1>
+            <span class="logo-name"> Sadeq </span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="portfolio">
+        <div class="container">
+          <main class="gallery services">
+            <h2 data-i18n="adverServices">Advertising Services</h2>
+            <div data-speed=".9" class="gallery__left">
+              <ol>
+                <!-- item -->
+                <li class="gallery__item">
+                  <div class="icon">
+                    <i class="fa-brands fa-adversal"></i>
+                  </div>
+                  <div class="title" data-i18n="adverServices1">Branding</div>
+                  <div class="descr"></div>
+                </li>
+                <!-- item -->
+                <li class="gallery__item">
+                  <div class="icon">
+                    <i class="fa-brands fa-adversal"></i>
+                  </div>
+                  <div class="title" data-i18n="adverServices2">Social Media</div>
+                  <div class="descr"></div>
+                </li>
+                <!-- item -->
+                <li class="gallery__item">
+                  <div class="icon">
+                    <i class="fa-brands fa-adversal"></i>
+                  </div>
+                  <div class="title" data-i18n="adverServices3">Printing</div>
+                  <div class="descr"></div>
+                </li>
+                <!-- item -->
+                <li class="gallery__item">
+                  <div class="icon">
+                    <i class="fa-brands fa-adversal"></i>
+                  </div>
+                  <div class="title" data-i18n="adverServices4">Packaging</div>
+                  <div class="descr"></div>
+                </li>
+                <!-- item -->
+                <li class="gallery__item">
+                  <div class="icon">
+                    <i class="fa-brands fa-adversal"></i>
+                  </div>
+                  <div class="title" data-i18n="adverServices5">Web Design</div>
+                  <div class="descr"></div>
+                </li>
+                <!-- item -->
+                <li class="gallery__item">
+                  <div class="icon">
+                    <i class="fa-brands fa-adversal"></i>
+                  </div>
+                  <div class="title" data-i18n="adverServices6">Digital Marketing</div>
+                  <div class="descr"></div>
+                </li>
+              </ol>
+            </div>
+          </main>
+        </div>
+      </div>
+      <main class="studio gallery" id="studio">
+        <div class="container p-0 m-0">
+            <div class="form">
+              <div class="form__group field">
+                <input type="input" class="form__field" placeholder="Name" name="title" id="title"
+                  value="{{ request.GET.title }}" />
+                <label for="title" class="form__label" data-i18n="search">Search</label>
+              </div>
+              <select id = "category" name="category">
+                <option value="" disabled selected data-i18n="fbCategory">Filter By Category</option>
+                {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+              </select>
+              <button onclick="fetchPictures()" data-i18n="search">Search</button>
+            </div>
+        </div>
+        <div class="container gallery__right">
+          <!-- 7 items  -->
+          {% for picture in pictures %}
+          <div class="gallery-item">
+            <div class="content">{{picture.title}}</div>
+            <img src="{{ picture.image.url }}" alt="" />
+          </div>
+          {% endfor %}
+        </div>
+        <div class="container p-0 m-0">
+          <ul class="page" dir="ltr">
+            <li class="page__btn">
+              {% if pictures.has_previous %}
+              <a href="?{% if request.GET.title %}title={{ request.GET.title }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}&page={{ pictures.previous_page_number }}"
+                style="color: #6eaace"><i class="fa-solid fa-chevron-left"></i></a>
+              {% else %}
+              <span><i class="fa-solid fa-chevron-left"></i></span>
+              {% endif %}
+            </li>
+
+            {% for num in pictures.paginator.page_range %}
+            {% if pictures.number == num %}
+            <li  class="page__numbers active">{{ num }}</li>
+            {% else %}
+            <a href="?{% if request.GET.title %}title={{ request.GET.title }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}&page={{ num }}"
+              style="color: white; text-decoration: none;">
+              <li class="page__numbers">{{ num }}</li>
+            </a>
+            {% endif %}
+            {% endfor %}
+
+            <li class="page__btn">
+              {% if pictures.has_next %}
+              <a href="?{% if request.GET.title %}title={{ request.GET.title }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}&page={{ pictures.next_page_number }}"
+                style="color: #6eaace"><i class="fa-solid fa-chevron-right"></i></a>
+              {% else %}
+              <span><i class="fa-solid fa-chevron-right"></i></span>
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+      </main>
+      <footer class="footer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="footer-bg">
+          <path fill="#212121" fill-opacity="1"
+            d="M0,128L48,138.7C96,149,192,171,288,170.7C384,171,480,149,576,149.3C672,149,768,171,864,160C960,149,1056,107,1152,90.7C1248,75,1344,85,1392,90.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+          </path>
+        </svg>
+        <div class="social-overlap process-scetion">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-10">
+                <div class="social-bar">
+                  <div class="social-icons iconpad text-center">
+                    <a class="slider-nav-item" href="https://www.facebook.com/sadeqadvertising?mibextid=LQQJ4d"
+                      target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a class="slider-nav-item" href="mailto:hello@sadeqgroup.com"><i class="fas fa-envelope"></i></a>
+                    <a class="slider-nav-item" href="tel:201095272427" target="_blank"><i
+                        class="fa-solid fa-phone"></i></a>
+                    <a class="slider-nav-item" href="https://api.whatsapp.com/send?phone=971545612622"
+                      target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+                    <a href="https://instagram.com/sadeqadvertising?igshid=MzRlODBiNWFlZA==" target="_blank"
+                      class="slider-nav-item"><i class="fab fa-instagram"></i></a>
+
+                    <a target="_blank" class="slider-nav-item"
+                      href="https://www.tiktok.com/@sadeqadvertising?_t=8dWuLpUTR7F&_r=1"><i
+                        class="fab fa-tiktok"></i></a>
+
+                    <a href="https://twitter.com/sadeqadvertisin?s=11" target="_blank" class="slider-nav-item"><i
+                        class="fab fa-twitter"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p data-i18n="footer">All rights reserved by Sadeq Group © 2023</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+<script>
+function fetchPictures() {
+    var title = $('#title').val();
+    var category = $('#category').val();
+
+    $.ajax({
+        url: "{% url 'core:fetch_pics' type=2 %}",
+        type: 'GET',
+        data: {
+            title: title,
+            category: category
+        },
+success: function (data) {
+    var picturesContainer = $('.gallery__right');
+    picturesContainer.empty();
+    for (var key in data.pictures) {
+        if (data.pictures.hasOwnProperty(key)) {
+            var picture = data.pictures[key];
+            var picPath = picture.image_url;
+            var title = picture.title;
+            var galleryItem = $('<div class="gallery-item"></div>');
+            var content = $('<div class="content">' + title + '</div>');
+            var img = $('<img src="' + picPath + '" alt="">');
+            galleryItem.append(content);
+            galleryItem.append(img);
+            picturesContainer.append(galleryItem);
+        }
+    }
+},
+        error: function () {
+            // Handle the error case
+            console.error('Error fetching pictures.');
+        }
+    });
+}
+
+</script>
+</body>
+{% endblock %}

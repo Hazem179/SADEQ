@@ -1,0 +1,331 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<body class="">
+  <div class="wrapper">
+    {% include 'includes/navbar.html' %}
+    <div class="content">
+      <header class="hero-section">
+        <img data-speed=".6" class="hero" src="{{bg}}" alt="Alt" />
+        <div class="container">
+          <div data-speed=".75" class="main-header">
+            <div class="main-box">
+              <span data-i18n="allSpan"> All In </span>
+            <h1 class="main-title" data-i18n="all">
+              One <br />Group
+
+            </h1>
+            <span class="logo-name"> Sadeq </span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="portfolio">
+        <div class="container">
+          <main class="gallery space-0-t space-0">
+            <div data-speed="1.5" class="gallery__left">
+              <div class="text-block gallery__item">
+                <h2 class="text-block__h"  data-i18n="aboutUs" >ABOUT US</h2>
+                <p class="text-block__p"  data-i18n="aboutUsP">
+                  SADEQ consists of several brands which cover all sectors of
+                  the world of architecture and advertising services in many
+                  countries. The idea of SADEQ is to make you relate with only
+                  one partner to build and grow your business.
+                </p>
+              </div>
+            </div>
+            <div class="gallery-right"></div>
+          </main>
+
+          <main class="gallery space-0">
+            <div data-speed="1.5" class="gallery__left"></div>
+            <div class="gallery-right">
+              <div class="text-block gallery__item">
+                <h2 class="text-block__h"  data-i18n="mission">Mission</h2>
+                <p class="text-block__p"  data-i18n="missionP">
+                  We aim to turn your dreams into reality. we take care of all
+                  your details starting from planning to the final product.
+                </p>
+              </div>
+            </div>
+          </main>
+          <main class="gallery space-0">
+            <div data-speed="1.5" class="gallery__left">
+              <div class="text-block gallery__item">
+                <h2 class="text-block__h"  data-i18n="vision">Vision</h2>
+                <p class="text-block__p"  data-i18n="visionP">
+                  We seek to spread internationally more and more and to be
+                  the best international one-of-a-kind multi-services company
+                  through our unique and accurate projects that cover all your
+                  needs.
+                </p>
+              </div>
+            </div>
+            <div class="gallery__right"></div>
+          </main>
+          <!-- <main class="gallery">
+              <div data-speed=".9" class="gallery__left">
+                <div class="text-block gallery__item">
+                  <h2 class="text-block__h">ABOUT US</h2>
+                  <p class="text-block__p">
+
+                  </p>
+                </div>
+                <div class="text-block gallery__item">
+                  <h2 class="text-block__h">WHAT WE HAVE?</h2>
+                  <p class="text-block__p">
+                    We seek to spread internationally more and more and to be
+                    the best international one-of-a-kind multi-services company
+                    through our unique and accurate projects that cover all your
+                    needs.
+                  </p>
+                </div>
+              </div>
+
+              <div data-speed="1.1" class="gallery__right">
+                <div class="text-block gallery__item">
+                  <h2 class="text-block__h">WHO ARE WE?</h2>
+                  <p class="text-block__p">
+                    We aim to turn your dreams into reality. we take care of all
+                    your details starting from planning to the final product.
+                  </p>
+                </div>
+                <div class="text-block gallery__item">
+                  <h2 class="text-block__h">
+                    WHAT WE LOOK FORWARD TO (VISION)
+                  </h2>
+                  <p class="text-block__p">
+                    SADEQ consists of several brands which cover all sectors of
+                    the world of architecture and advertising services in many
+                    countries. The idea of SADEQ is to make you relate with only
+                    one partner to build and grow your business. We began in
+                    Mansoura, Egypt in 2018. in 2020, We have our second branch
+                    in Cairo, Egypt. and by 2022, We have our third branch in
+                    Dubai, UAE. finally, we are in Riyadh, KSA.
+                  </p>
+                </div>
+              </div>
+            </main> -->
+          <!-- <main class="gallery">
+              <div data-speed=".9" class="gallery__left">
+                <img class="gallery__item" src="img/sadeq/1.png" alt="Alt" />
+                <img class="gallery__item" src="img/sadeq/2.png" alt="Alt" />
+              </div>
+              <div class="gallery__item height">
+                <img class="" src="img/sadeq/3.png" alt="Alt" />
+              </div>
+
+              <div data-speed="1.1" class="gallery__right">
+                <img class="gallery__item" src="img/sadeq/4.png" alt="Alt" />
+                <img class="gallery__item" src="img/sadeq/5.png" alt="Alt" />
+              </div>
+            </main> -->
+          <!-- <main class="gallery timeline">
+              <ul data-speed="1.1" class="gallery__right">
+                <li class="gallery__item" style="--accent-color: #41516c">
+                  <div class="date">2002</div>
+                  <div class="title">Title 1</div>
+                  <div class="descr">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Quas itaque hic quibusdam fugiat est numquam harum,
+                    accusamus suscipit consequatur laboriosam!
+                  </div>
+                </li>
+                <li class="gallery__item" style="--accent-color: #fbca3e">
+                  <div class="date">2007</div>
+                  <div class="title">Title 2</div>
+                  <div class="descr">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Quos adipisci nobis nostrum vero nihil veniam.
+                  </div>
+                </li>
+                <li class="gallery__item" style="--accent-color: #e24a68">
+                  <div class="date">2012</div>
+                  <div class="title">Title 3</div>
+                  <div class="descr">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Fuga minima consequuntur soluta placeat iure totam commodi
+                    repellendus ea delectus, libero fugit quod reprehenderit,
+                    sequi quo, et dolorum saepe nulla hic.
+                  </div>
+                </li>
+                <li class="gallery__item" style="--accent-color: #1b5f8c">
+                  <div class="date">2017</div>
+                  <div class="title">Title 4</div>
+                  <div class="descr">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Impedit, cumque.
+                  </div>
+                </li>
+                <li class="gallery__item" style="--accent-color: #4cadad">
+                  <div class="date">2022</div>
+                  <div class="title">Title 5</div>
+                  <div class="descr">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Odit, non.
+                  </div>
+                </li>
+              </ul>
+            </main> --> 
+          <main class="timeline gallery" dir="ltr">
+            <div class="outer gallery__left">
+              <div class="card gallery__item">
+                <div class="info">
+                  <h3 class="title">
+                    <div class="year">2018</div>
+                <span  data-i18n="mansoura">
+                  Mansoura
+                </span> 
+                  </h3>
+                  <!-- <p>We began in , Egypt</p> -->
+                </div>
+              </div>
+              <div class="card gallery__item opacity-5">
+                <div class="info">
+                  <h3 class="title">
+                    <div class="year">2019</div>
+                  </h3>
+                  <!-- <p>We began in , Egypt</p> -->
+                </div>
+              </div>
+              <div class="card gallery__item">
+                <div class="info">
+                  <h3 class="title">
+                    <div class="year">2020</div>
+                    <span  data-i18n="cairo">
+
+                      Cairo
+                    </span>
+                  </h3>
+                  <!-- <p>We have our second branch in Cairo, Egypt.</p> -->
+                </div>
+              </div>
+              <div class="card gallery__item opacity-5">
+                <div class="info">
+                  <h3 class="title">
+                    <div class="year">2021</div>
+                  </h3>
+                  <!-- <p>We began in , Egypt</p> -->
+                </div>
+              </div>
+              <div class="card gallery__item">
+                <div class="info">
+                  <h3 class="title">
+                    <div class="year">2022</div>
+                    <span  data-i18n="dubai">
+                      Dubai
+                    </span>
+                  </h3>
+                </div>
+              </div>
+              <div class="card gallery__item">
+                <div class="info">
+                  <h3 class="title">
+                    <div class="year">2023</div>
+                    <span  data-i18n="riyadh">
+
+                      Riyadh
+                    </span>
+                  </h3>
+                  <!-- <p>we are in Riyadh, KSA.</p> -->
+                </div>
+              </div>
+            </div>
+          </main>
+          <main class="gallery icons-section" dir="ltr">
+            <div class="iconscontainer gallery__right">
+              <!-- Icon -->
+              <div class="icon gallery__item">
+                S
+                <span  data-i18n="stability">Stability</span>
+                <div class="vertical-line"></div>
+
+                <!-- <div class="arrow">
+                    <div class="curve"></div>
+                    <div class="point"></div>
+                  </div> -->
+              </div>
+              <!-- Icon -->
+              <div class="icon gallery__item">
+                A
+
+                <span data-i18n="accuracy"> Accuracy</span>
+                <!-- <div class="arrow">
+                    <div class="curve"></div>
+                    <div class="point"></div>
+                  </div> -->
+                <div class="vertical-line"></div>
+              </div>
+              <!-- Icon -->
+              <div class="icon gallery__item">
+                D
+                <span data-i18n="dependable"> Dependable</span>
+                <!-- <div class="arrow">
+                    <div class="curve"></div>
+                    <div class="point"></div>
+                  </div> -->
+                <div class="vertical-line"></div>
+              </div>
+              <!-- Icon -->
+              <div class="icon gallery__item">
+                E
+                <span data-i18n="enhancing">Enhancing</span>
+                <!-- <div class="arrow">
+                    <div class="curve"></div>
+                    <div class="point"></div>
+                  </div> -->
+                <div class="vertical-line"></div>
+              </div>
+              <!-- Icon -->
+              <div class="icon gallery__item">
+                Q
+                <span data-i18n="quality"> Quality</span>
+                <!-- <div class="arrow">
+                    <div class="curve"></div>
+                    <div class="point"></div>
+                  </div> -->
+                <div class="vertical-line"></div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+      <footer class="footer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="footer-bg">
+          <path fill="#212121" fill-opacity="1"
+            d="M0,128L48,138.7C96,149,192,171,288,170.7C384,171,480,149,576,149.3C672,149,768,171,864,160C960,149,1056,107,1152,90.7C1248,75,1344,85,1392,90.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+          </path>
+        </svg>
+        <div class="social-overlap process-scetion">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-10">
+                <div class="social-bar">
+                  <div class="social-icons iconpad text-center">
+                    <a class="slider-nav-item" href="tel:201095272427" target="_blank"><i
+                        class="fa-solid fa-phone"></i></a>
+                    <a class="slider-nav-item" href="mailto:hello@sadeqgroup.com"><i class="fas fa-envelope"></i></a>
+                    <a class="slider-nav-item" href="https://api.whatsapp.com/send?phone=971545612622"
+                      target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a class="slider-nav-item" href="https://www.facebook.com/sadeqgroupp?mibextid=LQQJ4d"
+                      target="_blank"><i class="fab fa-facebook"></i></a>
+
+                    <a href="https://instagram.com/sadeqgroup?igshid=MzRlODBiNWFlZA==" target="_blank"
+                      class="slider-nav-item"><i class="fab fa-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p data-i18n="footer">All rights reserved by Sadeq Group © 2023</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+</body>
+{% endblock %}

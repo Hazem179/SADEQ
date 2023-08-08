@@ -1,0 +1,25 @@
+{% load static %}
+<div class="navbar">
+        <div class="container">
+          <img src="{% static 'images/logo.png' %}" alt="" />
+          <ul class="links">
+            <li><a href="{% url 'core:home' %}" data-i18n="home">HOME</a></li>
+            <li><a href="{% url 'core:architecture' %}" data-i18n="arch">ARCHITECTURE </a></li>
+            <li><a href="{% url 'core:advertising' %}" data-i18n="adver">ADVERTISING </a></li>
+            <li><a href="{% url 'core:blog' %}" data-i18n="blog">Blog </a></li>
+            <button class="language"  data-i18n="lang"></button>
+            <!-- <div id="google_translate_element"></div> -->
+          </ul>
+        <div class="box">
+            <div class="mode">
+            <i class="fa-regular fa-moon"></i>
+            <!-- <i class="fa-regular fa-sun"></i> -->
+          </div>
+          <div class="bars">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+          <button class="language" data-i18n="lang"></button>
+          <!-- <div id="google_translate_element1"></div> -->
+        </div>
+        </div>
+      </div>
