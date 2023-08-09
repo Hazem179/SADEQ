@@ -9,11 +9,12 @@
 
               </div>
                 <div class="container">
-                <main class="gallery blogDetails">
+                <main class=" blogDetails">
                     <div class="tag" {% if post.category.type == '2' %} data-type="adver" {% else %} data-type="arch" {% endif %}>
                         {{ post.category.name }}</div>
                     <img src="{{post.post_image.url}}" alt="">
-                    <h3>{{post.title}}</h3>
+                   <div class="justify-spacebetween"> <h3>{{post.title}}</h3> <p class="date">{{post.created_at }}</p></div>
+                    <h5>{{post.subtitle}}</h5>
                     <p>{{post.body}}</p>
                 </main>
      

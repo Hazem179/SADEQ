@@ -1240,6 +1240,23 @@ select option {
   margin: 20px 0;
   text-align: start;
 }
+.blogDetails h5 {
+  margin: 20px 0 30px;
+  font-size: 1.2rem;
+}
+.blogDetails p {
+  line-height: 1.7;
+}
+.justify-spacebetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.justify-spacebetween .date {
+  min-width: fit-content;
+  direction: rtl;
+}
+
 .page {
   display: flex;
   flex-direction: row;
