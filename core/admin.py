@@ -10,7 +10,6 @@ admin.site.register(Picture)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name','type','description')
     search_fields = ('name','type')
-
     exclude = ('slug',)
 
 admin.site.register(Category,CategoryAdmin)
@@ -21,4 +20,12 @@ class BackGroundImageModelAdmin(admin.ModelAdmin):
         # Disable deleting for all instances of YourModel
         return False
 admin.site.register(BackgroundImage,BackGroundImageModelAdmin)
-admin.site.register(BlogPost)
+
+
+
+
+class BlogPostAdmin(admin.ModelAdmin):
+    list_display = ('title','category','created_at')
+    search_fields = ('name','category')
+    
+admin.site.register(BlogPost,BlogPostAdmin)

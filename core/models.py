@@ -36,7 +36,9 @@ class BackgroundImage(models.Model):
     class Meta:
         verbose_name = 'صورة الخلفية'
         verbose_name_plural = 'صور الخلفية'
-
+    
+    def __str__(self):
+        return self.image
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=128,verbose_name='عنوان المنشور')
@@ -48,3 +50,6 @@ class BlogPost(models.Model):
     class Meta:
         verbose_name = 'منشور'
         verbose_name_plural = 'المنشورات'
+    
+    def __str__(self):
+        return self.title

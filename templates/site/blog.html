@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
 <body class=" ">
     <div class="wrapper">
         {% include 'includes/navbar.html' %}
@@ -76,15 +80,25 @@
                    </div>
                 </div>
                 </main>
+                
                 <div class="stack">
-                    <li><i class="fa-solid fa-chevron-left"></i></li>
-                    <li class="active">1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li><i class="fa-solid fa-chevron-right"></i></li>
+                    {% if posts.has_previous %}
+                        <li><a href="?page=1"><i class="fa-solid fa-chevron-left"></i></a></li>
+                    {% else %}
+                        <li><i class="fa-solid fa-chevron-left"></i></li>
+                    {% endif %}
+                    {% for num in posts.paginator.page_range %}
+                        <li{% if num == posts.number %} class="active"{% endif %}>
+                            <a href="?page={{ num }}">{{ num }}</a>
+                        </li>
+                    {% endfor %}
+                    {% if posts.has_next %}
+                        <li><a href="?page={{ posts.paginator.num_pages }}"><i class="fa-solid fa-chevron-right"></i></a></li>
+                    {% else %}
+                        <li><i class="fa-solid fa-chevron-right"></i></li>
+                    {% endif %}
                 </div>
+                
                 </div>
             </div>
             {% include 'includes/footer.html' %}
@@ -117,7 +131,6 @@
                     '<figcaption class="card__caption">' +
                     '<h2 class="card__title">' + post_data.title + '</h2>' +
                     '<p class="card__snippet">' + post_data.subtitle + '</p>' +
-                     
                     '<a href="' + url + '" class="card__button">Read more</a>'  +
                     '</figcaption>' +
                     '</figure>' +
