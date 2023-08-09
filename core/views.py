@@ -8,7 +8,6 @@ from .utils import filter_pictures,check_background_image
 # Create your views here.
 def home(request):
     bg = check_background_image()
-    print(bg)
     context = {'bg':bg}
     return render(request, 'site/home.html',context)
 
