@@ -55,10 +55,9 @@ def blog(request):
 
 
 def post(request,slug):
-    blog_post =  BlogPost.objects.get(slug =slug)
+    blog_post =  BlogPost.objects.get(slug = slug)
     context = {
         "post":blog_post,
-        
     }
     return render(request, 'site/blogDetails.html',context=context)
 
@@ -85,3 +84,8 @@ def get_posts(request):
             }
             posts.append(post_data)
     return JsonResponse(posts,safe=False)
+
+
+
+def custom_404(request, exception):
+    return render(request, 'site/404.html', status=404)
