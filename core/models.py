@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 import datetime
 # Create your models here.
 
@@ -42,6 +43,7 @@ class BackgroundImage(models.Model):
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=128,verbose_name='عنوان المنشور')
+    slug = models.SlugField(max_length=100,blank=True,verbose_name="الرابط")
     subtitle = models.CharField(max_length=64,verbose_name='العنوان الفرعي')
     body = models.TextField(verbose_name="محتوى المنشور")
     category = models.ForeignKey(Category,on_delete=models.CASCADE,verbose_name="التصنيف")
@@ -50,6 +52,13 @@ class BlogPost(models.Model):
     class Meta:
         verbose_name = 'منشور'
         verbose_name_plural = 'المنشورات'
-    
+
+
+    def save(self, *args, **kwargs):
+        title = self.title
+        self.slug = slugify(title, allow_unicode=True)
+        super().save(*args, **kwargs)
+
+
     def __str__(self):
         return self.title

@@ -23,9 +23,9 @@ admin.site.register(BackgroundImage,BackGroundImageModelAdmin)
 
 
 
-
 class BlogPostAdmin(admin.ModelAdmin):
     list_display = ('title','category','created_at')
     search_fields = ('name','category')
+    exclude = ('slug',) 
     
 admin.site.register(BlogPost,BlogPostAdmin)

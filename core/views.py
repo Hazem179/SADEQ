@@ -56,8 +56,8 @@ def blog(request):
     return render(request, 'site/blog.html',context=context)
 
 
-def blogDetails(request,id):
-    blog_post =  BlogPost.objects.get(id =id)
+def post(request,slug):
+    blog_post =  BlogPost.objects.get(slug =slug)
     context = {
         "post":blog_post,
         
@@ -66,7 +66,6 @@ def blogDetails(request,id):
 
 
 def get_posts(request):
-    
     posts = []
     category = request.GET.get('category')
     if category == 'all':
@@ -76,6 +75,7 @@ def get_posts(request):
     for post in post_objects:
             post_data = {
                 'id':post.id,
+                'slug':post.slug,
                 'title': post.title,
                 'subtitle': post.subtitle,
                 'body': post.body,
