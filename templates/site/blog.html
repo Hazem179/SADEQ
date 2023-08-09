@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
 <body class=" ">
     <div class="wrapper">
         {% include 'includes/navbar.html' %}
@@ -66,7 +70,7 @@
                             <figcaption class="card__caption">
                                 <h2 class="card__title">{{ post.title }}</h2>
                                 <p class="card__snippet">{{ post.subtitle }}</p>
-                                <a href="{% url 'core:blogDetails' post.id %}" class="card__button">Read more</a>
+                                <a href="{% url 'core:post' post.slug %}" class="card__button">Read more</a>
                             </figcaption>
                         </figure>
                     </div>
@@ -76,15 +80,25 @@
                    </div>
                 </div>
                 </main>
+                
                 <div class="stack">
-                    <li><i class="fa-solid fa-chevron-left"></i></li>
-                    <li class="active">1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li><i class="fa-solid fa-chevron-right"></i></li>
+                    {% if posts.has_previous %}
+                        <li><a href="?page=1"><i class="fa-solid fa-chevron-left"></i></a></li>
+                    {% else %}
+                        <li><i class="fa-solid fa-chevron-left"></i></li>
+                    {% endif %}
+                    {% for num in posts.paginator.page_range %}
+                        <li{% if num == posts.number %} class="active"{% endif %}>
+                            <a href="?page={{ num }}">{{ num }}</a>
+                        </li>
+                    {% endfor %}
+                    {% if posts.has_next %}
+                        <li><a href="?page={{ posts.paginator.num_pages }}"><i class="fa-solid fa-chevron-right"></i></a></li>
+                    {% else %}
+                        <li><i class="fa-solid fa-chevron-right"></i></li>
+                    {% endif %}
                 </div>
+                
                 </div>
             </div>
             {% include 'includes/footer.html' %}
@@ -106,7 +120,7 @@
             console.log(data.length)
             for (var i = 0; i < data.length; i++) {
                 var post_data = data[i];
-                var url = "{% url 'core:blogDetails' 0 %}".replace('0', post_data.id);
+                var url = "{% url 'core:post' 0 %}".replace('0', post_data.slug);
                 var cardHtml = '<div class="blog-card">' +
                     '<div class="tag" data-type="' + (post_data.category_type === '2' ? 'adver' : 'arch') + '">' +
                     post_data.category_name +
@@ -117,7 +131,6 @@
                     '<figcaption class="card__caption">' +
                     '<h2 class="card__title">' + post_data.title + '</h2>' +
                     '<p class="card__snippet">' + post_data.subtitle + '</p>' +
-                     
                     '<a href="' + url + '" class="card__button">Read more</a>'  +
                     '</figcaption>' +
                     '</figure>' +

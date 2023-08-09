@@ -1,6 +1,6 @@
-from turtle import pos
 from django.db.models import Q
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from django.http import JsonResponse
 from .models import Picture,Category,BlogPost
 from .utils import filter_pictures,check_background_image
@@ -42,7 +42,10 @@ def advertising(request):
 def blog(request):
     bg = check_background_image()
     categories = Category.objects.all()
-    posts = BlogPost.objects.all()
+    posts_objects = BlogPost.objects.all()
+    paginator = Paginator(posts_objects, 8)  # Number of items per page
+    page_number = request.GET.get('page')
+    posts = paginator.get_page(page_number)
     context = {
         'categories':categories,
         'posts':posts,
@@ -51,8 +54,8 @@ def blog(request):
     return render(request, 'site/blog.html',context=context)
 
 
-def blogDetails(request,id):
-    blog_post =  BlogPost.objects.get(id =id)
+def post(request,slug):
+    blog_post =  BlogPost.objects.get(slug =slug)
     context = {
         "post":blog_post,
         
@@ -61,7 +64,6 @@ def blogDetails(request,id):
 
 
 def get_posts(request):
-    
     posts = []
     category = request.GET.get('category')
     if category == 'all':
@@ -71,6 +73,7 @@ def get_posts(request):
     for post in post_objects:
             post_data = {
                 'id':post.id,
+                'slug':post.slug,
                 'title': post.title,
                 'subtitle': post.subtitle,
                 'body': post.body,
