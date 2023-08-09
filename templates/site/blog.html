@@ -60,12 +60,12 @@
                        <div class="blog-card  ">
                         <div class="tag" {% if post.category.type == '2' %} data-type="adver" {% else %} data-type="arch" {% endif %}>
                             {{ post.category.name }}</div>
+                            <p class="card__snippet date">{{ post.created_at|date:"d/m/Y"  }}</p>
                         <figure class="card__thumb">
                             <img src="{{ post.post_image.url }}" alt="Picture by David Monje" class="card__image">
                             <figcaption class="card__caption">
                                 <h2 class="card__title">{{ post.title }}</h2>
                                 <p class="card__snippet">{{ post.subtitle }}</p>
-                                <p class="card__snippet">{{ post.created_at|date:"d/m/Y"  }}</p>
                                 <a href="{% url 'core:blogDetails' post.id %}" class="card__button">Read more</a>
                             </figcaption>
                         </figure>
@@ -111,12 +111,13 @@
                     '<div class="tag" data-type="' + (post_data.category_type === '2' ? 'adver' : 'arch') + '">' +
                     post_data.category_name +
                     '</div>' +
+                    '<p class="card__snippet date">' + post_data.created_at + '</p>'+
                     '<figure class="card__thumb">' +
                     '<img src="' + post_data.image_url + '" alt="Picture by David Monje" class="card__image">' +
                     '<figcaption class="card__caption">' +
                     '<h2 class="card__title">' + post_data.title + '</h2>' +
                     '<p class="card__snippet">' + post_data.subtitle + '</p>' +
-                    '<p class="card__snippet">' + post_data.created_at + '</p>' +
+                     
                     '<a href="' + url + '" class="card__button">Read more</a>'  +
                     '</figcaption>' +
                     '</figure>' +

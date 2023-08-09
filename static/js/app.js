@@ -178,7 +178,7 @@ links.forEach((link) => {
       console.log("adver");
       link.classList.add("active");
     }
-  } else if (window.location.pathname === "/blog") {
+  } else if (window.location.pathname === "/blog/") {
     if (link.dataset.i18n === "blog") {
       console.log("blog");
       link.classList.add("active");
