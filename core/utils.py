@@ -13,7 +13,6 @@ def check_background_image():
 
 def filter_pictures(request, type, template_name):
     bg = check_background_image()
-    print(bg)
     categories = Category.objects.filter(type=type)
     pictures = Picture.objects.filter(type=type)
     base_url = request.path_info

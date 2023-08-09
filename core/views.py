@@ -14,6 +14,7 @@ def home(request):
 
 def architecture(request):
     return filter_pictures(request, '1', 'site/architecture.html')
+
 def fetch_pics(request,type):
     if request.method == "GET":
         pictures = Picture.objects.filter(type=type)
@@ -39,11 +40,13 @@ def advertising(request):
 
 
 def blog(request):
+    bg = check_background_image()
     categories = Category.objects.all()
     posts = BlogPost.objects.all()
     context = {
         'categories':categories,
         'posts':posts,
+        'bg':bg,
     }
     return render(request, 'site/blog.html',context=context)
 
@@ -51,17 +54,23 @@ def blog(request):
 def blogDetails(request,id):
     blog_post =  BlogPost.objects.get(id =id)
     context = {
-        "post":blog_post
+        "post":blog_post,
+        
     }
     return render(request, 'site/blogDetails.html',context=context)
 
 
 def get_posts(request):
+    
     posts = []
     category = request.GET.get('category')
-    post_objects = BlogPost.objects.filter(category__id=category)
+    if category == 'all':
+        post_objects = BlogPost.objects.all()
+    else:
+        post_objects = BlogPost.objects.filter(category__id=category)
     for post in post_objects:
             post_data = {
+                'id':post.id,
                 'title': post.title,
                 'subtitle': post.subtitle,
                 'body': post.body,
@@ -69,7 +78,7 @@ def get_posts(request):
                 'category_type': post.category.type,
                 'created_at':post.created_at,
                 'image_url': post.post_image.url,
+
             }
             posts.append(post_data)
-    print(posts)
     return JsonResponse(posts,safe=False)
