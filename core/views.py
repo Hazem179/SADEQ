@@ -31,6 +31,7 @@ def fetch_pics(request,type):
             picture_data = {
                 'title': picture.title,
                 'image_url': picture.image.url,
+                'alt':picture.alt
             }
             pictures_data[i] = picture_data
     return JsonResponse({"pictures":pictures_data},safe=False)
@@ -80,6 +81,7 @@ def get_posts(request):
                 'category_type': post.category.type,
                 'created_at':post.created_at,
                 'image_url': post.post_image.url,
+                'alt':post.alt,
 
             }
             posts.append(post_data)

@@ -103,7 +103,7 @@
           {% for picture in pictures %}
           <div class="gallery-item">
             <div class="content">{{picture.title}}</div>
-            <img src="{{ picture.image.url }}" alt="" />
+            <img src="{{ picture.image.url }}" alt="{{ picture.alt }}" />
           </div>
           {% endfor %}
         </div>
@@ -167,7 +167,7 @@ success: function (data) {
             var title = picture.title;
             var galleryItem = $('<div class="gallery-item"></div>');
             var content = $('<div class="content">' + title + '</div>');
-            var img = $('<img src="' + picPath + '" alt="">');
+            var img = $('<img src="' + picPath + '" alt="'+ picture.alt +'">');
             galleryItem.append(content);
             galleryItem.append(img);
             picturesContainer.append(galleryItem);

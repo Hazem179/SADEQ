@@ -1,3 +1,5 @@
+from pickle import TRUE
+from statistics import mode
 from django.db import models
 from django.utils.text import slugify
 import datetime
@@ -24,6 +26,7 @@ class Category(models.Model):
 class Picture(models.Model):
     title = models.CharField(max_length=100,verbose_name='عنوان الصورة')
     image = models.ImageField(upload_to='images/',verbose_name='الصورة')
+    alt = models.CharField(max_length=100,null=True,blank = True)
     type = models.CharField(max_length=100,choices=TYPES,verbose_name='التصنيف')
     category = models.ForeignKey(Category,on_delete=models.CASCADE,verbose_name='الفئة')
     class Meta:
@@ -34,6 +37,7 @@ class Picture(models.Model):
 
 class BackgroundImage(models.Model):
     image = models.ImageField(upload_to='background_images/',verbose_name='صورة الخلفية',default='background_images/bg1.jpg')
+    alt = models.CharField(max_length=100,null=True,blank = True)
     class Meta:
         verbose_name = 'صورة الخلفية'
         verbose_name_plural = 'صور الخلفية'
@@ -48,6 +52,7 @@ class BlogPost(models.Model):
     body = models.TextField(verbose_name="محتوى المنشور")
     category = models.ForeignKey(Category,on_delete=models.CASCADE,verbose_name="التصنيف")
     post_image = models.ImageField(upload_to='post_images/',verbose_name='صورة المنشور')
+    alt = models.CharField(max_length=100,null=True,blank = True)
     created_at = models.DateField(default=datetime.date.today,verbose_name = "تاريخ إضافة المنشور")
     class Meta:
         verbose_name = 'منشور'

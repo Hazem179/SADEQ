@@ -12,7 +12,7 @@
                 <main class=" blogDetails">
                     <div class="tag" {% if post.category.type == '2' %} data-type="adver" {% else %} data-type="arch" {% endif %}>
                         {{ post.category.name }}</div>
-                    <img src="{{post.post_image.url}}" alt="">
+                    <img src="{{post.post_image.url}}" alt="{{post.alt}}">
                    <div class="justify-spacebetween"> <h3>{{post.title}}</h3> <p class="date">{{post.created_at|date:"d/m/Y" }}</p></div>
                     <h5>{{post.subtitle}}</h5>
                     <p>{{post.body}}</p>
